@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-users-gear text-gradient"></i>
+                <h1>Emp<span class="text-gradient">Manager</span></h1>
+            </div>
+            <p class="subtitle">DevOps CRUD Learning Project</p>
+        </header>
+
+        <main class="grid-layout">
+            <section class="card form-card">
+                <h2><i class="fa-solid fa-user-plus"></i> Add New Employee</h2>
+                <form id="employeeForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" id="name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                            <input type="email" id="email" placeholder="john.doe@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-briefcase input-icon"></i>
+                            <input type="text" id="department" placeholder="Software Engineering" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <span>Add Employee</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <button type="button" class="btn-secondary" id="cancelBtn" style="display: none;">
+                            <span>Cancel</span>
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card list-card">
+                <h2><i class="fa-solid fa-list"></i> Employee Directory</h2>
+                
+                <div class="table-container">
+                    <table id="employeeTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeeList">
+                            <tr class="placeholder-row">
+                                <td colspan="5" class="text-muted">Loading employees...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

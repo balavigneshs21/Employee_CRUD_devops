@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      - MYSQL_DATABASE=employeedb
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: employee-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/employeedb?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: employee-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
