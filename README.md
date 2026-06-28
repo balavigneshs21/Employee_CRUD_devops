@@ -156,6 +156,5 @@ To enable the Deploy job to authenticate and deploy, navigate to **Settings > Se
 │   ├── style.css                 # Custom styling
 │   ├── script.js                 # API interactions and DOM management
 │   └── Dockerfile                # Nginx web server image config
-├── docker-compose.yml            # Multi-service orchestration mapping
-└── deploy.sh                     # Manual helper script for deployment
+└── docker-compose.yml            # Multi-service orchestration mapping
 ```
